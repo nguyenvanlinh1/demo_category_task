@@ -32,7 +32,7 @@ const Banner = () => {
           >
             <IconCheck />
           </div>
-          <div>
+          <div className="d-none d-sm-inline">
             Việc mua thiết bị của bạn sẽ được bảo vệ bởi chế độ bảo hành mua
             thiết bị của ComacPro
           </div>

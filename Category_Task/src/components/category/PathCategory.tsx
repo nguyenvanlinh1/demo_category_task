@@ -5,7 +5,7 @@ const PathCategory = () => {
     <div>
       <Grid2 container spacing={2} padding={"20px"} bgcolor={"#FFC900"}>
         <Grid2 size={12} display="flex" justifyContent="center">
-          <Typography variant="h4" sx={{fontWeight: 600}}>Danh sách thiết bị thang nâng</Typography>
+          <Typography variant="h4" sx={{fontWeight: 600, color:"#2C2A29"}}>Danh sách thiết bị thang nâng</Typography>
         </Grid2>
         <Grid2 size={12} display="flex" justifyContent="center">
           <Breadcrumbs aria-label="breadcrumb">
@@ -19,7 +19,7 @@ const PathCategory = () => {
             >
               Aerial Working Platform
             </Link>
-            <Typography variant="body1" color="#000" fontWeight="500">Scissor Lift</Typography>
+            <Typography variant="body1" color="#2C2A29" fontWeight="600">Scissor Lift</Typography>
           </Breadcrumbs>
         </Grid2>
       </Grid2>

@@ -16,7 +16,7 @@ const ListProduct = () => {
     <div className="mt-3">
       <div className="d-flex justify-content-between align-items-center">
         <div className="px-3 py-1" style={{ borderLeft: "8px solid #FFA21A" }}>
-          <Typography variant="h4">Danh sách thang nâng</Typography>
+          <Typography variant="h4" color="#2C2A29">Danh sách thang nâng</Typography>
         </div>
         <div className="d-flex gap-2">
           <div onClick={handleCheck}>
@@ -29,14 +29,15 @@ const ListProduct = () => {
       </div>
       <div className="mt-3">
         <Grid2 container spacing={2}>
-          {/* {[1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, index) => (
-            <Grid2 size={4}>
-              <ProductItem key={index} />
-            </Grid2>
-          ))} */}
-          {[1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, index) => (
-              <ProductItemList key={index} />
-          ))}
+          {!isCheck
+            ? [1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, index) => (
+                <ProductItemList key={index} />
+              ))
+            : [1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, index) => (
+                <Grid2 size={{xs:12, sm: 6, lg: 4}}>
+                  <ProductItem key={index} />
+                </Grid2>
+              ))}
           <Grid2 size={12} display={"flex"} justifyContent={"center"}>
             <Pagination
               count={10}
@@ -55,7 +56,7 @@ const ListProduct = () => {
                 "& .Mui-selected": {
                   backgroundColor: "#FFA21A", // Nền khi nút được chọn
                   color: "#121110", // Màu chữ khi nút được chọn
-                  border: "none"
+                  border: "none",
                 },
               }}
             />

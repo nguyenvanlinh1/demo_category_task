@@ -6,6 +6,10 @@ import {
   FormControlLabel,
   FormGroup,
   Input,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
   Slider,
   Typography,
 } from "@mui/material";
@@ -13,6 +17,7 @@ import { BsSearch } from "react-icons/bs";
 import { PiMapPinBold } from "react-icons/pi";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { useState } from "react";
+import "./Search.css";
 
 const MAX = 10000000000;
 const MIN = 0;
@@ -28,9 +33,14 @@ const marks = [
 ];
 
 const SearchCategory = () => {
-  const [val, setVal] = useState<number>(MIN);
+  const [val, setVal] = useState<number>(MAX);
   const handleChange = (_: Event, newValue: number | number[]) => {
     setVal(newValue as number);
+  };
+  const [device, setDivice] = useState("");
+
+  const handleSelectChange = (event: SelectChangeEvent) => {
+    setDivice(event.target.value as string);
   };
   return (
     <div className="d-grid gap-3">
@@ -97,24 +107,13 @@ const SearchCategory = () => {
       </FormControl>
       <Box
         sx={{
-          border: "1px solid #000",
+          border: "1px solid #DEE2E6",
           borderRadius: "10px",
           gap: 2,
           height: "300px",
           padding: "10px",
           display: "flex",
           flexDirection: "column",
-          "&::-webkit-scrollbar": {
-            width: "8px",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#FFC900",
-            borderRadius: "10px",
-          },
-          "&::-webkit-scrollbar-track": {
-            backgroundColor: "#f0f0f0",
-            borderRadius: "10px",
-          },
         }}
       >
         <Typography variant="h5">Thương hiệu</Typography>
@@ -124,30 +123,78 @@ const SearchCategory = () => {
             height: "280px",
             padding: "10px",
             borderRadius: "10px",
+            "&::-webkit-scrollbar": {
+              width: "8px", // Độ rộng thanh cuộn
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#FFC900", // Màu vàng cho thanh cuộn
+              borderRadius: "10px",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#f0f0f0", // Màu nền cho thanh cuộn
+              borderRadius: "10px",
+            },
           }}
         >
           <FormGroup>
             {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, index) => (
               <FormControlLabel
                 key={index}
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    sx={{
+                      "&.Mui-checked": {
+                        color: "#FFC900",
+                      },
+                    }}
+                  />
+                }
                 label="Airman"
               />
             ))}
           </FormGroup>
         </Box>
       </Box>
-      <Box>
-        <select className="form-select" aria-label="Default select example">
+
+      {/* <Box>
+        <select
+          className="form-select custom-select"
+          aria-label="Default select example"
+        >
           <option selected>Đời thiết bị</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
         </select>
+      </Box> */}
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Đời thiết bị</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={device}
+            label="Device"
+            onChange={handleSelectChange}
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  "& .MuiMenuItem-root:hover": {
+                    backgroundColor: "#FFC900", // Áp dụng màu vàng cho tất cả MenuItem khi hover
+                  },
+                },
+              },
+            }}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
       </Box>
       <Box
         sx={{
-          border: "1px solid #000",
+          border: "1px solid #DEE2E6",
           borderRadius: "10px",
           gap: 2,
           padding: "20px",

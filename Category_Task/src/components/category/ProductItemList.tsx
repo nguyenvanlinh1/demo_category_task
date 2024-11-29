@@ -21,11 +21,11 @@ const IconAddress = () => {
 
 const ProductItemList = () => {
   return (
-    <Grid2 container size={12} sx={{border:"1px solid gray", borderRadius:"10px"}}>
-      <Grid2 size={3.5}>
+    <Grid2 container size={12} sx={{border:"1px solid #DEE2E6", borderRadius:"10px"}}>
+      <Grid2 size={{xs:12, sm: 3.5}}>
         <img src={ImageProductItem} alt="Product Item" style={{height: "100%", width:"100%", objectFit:"cover", borderEndStartRadius:"10px", borderStartStartRadius:"10px"}}></img>
       </Grid2>
-      <Grid2 size={5}>
+      <Grid2 size={{xs: 12, sm:5}}>
         <Box px={3} py={2}>
           <Typography variant="body1" sx={{fontWeight:"600"}}>
             2021 Spider 15.75 Pro Platform Basket Spider Lift
@@ -48,7 +48,7 @@ const ProductItemList = () => {
           </Box>
         </Box>
       </Grid2>
-      <Grid2 size={3.5} px={2} py={2}>
+      <Grid2 size={{xs:12, sm: 3.5}} px={2} py={2}>
         <Box display={"flex"} justifyContent={"flex-end"} alignItems={"center"}>
           <span className="me-2" style={{ color: "#FFA21A", fontSize:"24px", fontWeight:"600" }}>
             2.500.000.000

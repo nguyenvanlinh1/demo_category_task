@@ -1,0 +1,18 @@
+/* App.css */
+.custom-select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.custom-select option {
+  background-color: white;
+  color: black;
+  padding: 10px;
+}
+
+.custom-select option:hover {
+  background-color: #ffeb3b;
+  color: black;
+}

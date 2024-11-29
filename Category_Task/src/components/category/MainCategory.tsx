@@ -7,10 +7,10 @@ const MainCategory = () => {
   return (
     <div>
       <Grid2 container spacing={2} padding="20px">
-        <Grid2 size={3}>
+        <Grid2 size={{xs: 12, md:3}}>
           <SearchCategory />
         </Grid2>
-        <Grid2 size={9}>
+        <Grid2 size={{xs: 12, md: 9}}>
           <Grid2 size={12}>
             <Banner />
           </Grid2>
