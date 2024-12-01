@@ -1,6 +1,7 @@
 import { Box, Button, Grid2, Typography } from "@mui/material";
 import ImageProductItem from "../../assets/ImageProductItem.png";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const IconAddress = () => {
   return (
@@ -20,14 +21,35 @@ const IconAddress = () => {
 };
 
 const ProductItemList = () => {
+  const navigate = useNavigate();
+  const transferDetailProduct = () => {
+    navigate("/product/1");
+  };
   return (
-    <Grid2 container size={12} sx={{border:"1px solid #DEE2E6", borderRadius:"10px"}}>
-      <Grid2 size={{xs:12, sm: 3.5}}>
-        <img src={ImageProductItem} alt="Product Item" style={{height: "100%", width:"100%", objectFit:"cover", borderEndStartRadius:"10px", borderStartStartRadius:"10px"}}></img>
+    <Grid2
+      container
+      size={12}
+      sx={{ border: "1px solid #DEE2E6", borderRadius: "10px" }}
+    >
+      <Grid2 size={{ xs: 12, sm: 3.5 }}>
+        <img
+          loading="lazy"
+          src={ImageProductItem}
+          alt="Product Item"
+          style={{
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+            borderEndStartRadius: "10px",
+            borderStartStartRadius: "10px",
+            cursor: "pointer",
+          }}
+          onClick={transferDetailProduct}
+        ></img>
       </Grid2>
-      <Grid2 size={{xs: 12, sm:5}}>
+      <Grid2 size={{ xs: 12, sm: 5 }}>
         <Box px={3} py={2}>
-          <Typography variant="body1" sx={{fontWeight:"600"}}>
+          <Typography variant="body1" sx={{ fontWeight: "600" }}>
             2021 Spider 15.75 Pro Platform Basket Spider Lift
           </Typography>
           <Box className="d-flex align-items-center">
@@ -48,9 +70,12 @@ const ProductItemList = () => {
           </Box>
         </Box>
       </Grid2>
-      <Grid2 size={{xs:12, sm: 3.5}} px={2} py={2}>
+      <Grid2 size={{ xs: 12, sm: 3.5 }} px={2} py={2}>
         <Box display={"flex"} justifyContent={"flex-end"} alignItems={"center"}>
-          <span className="me-2" style={{ color: "#FFA21A", fontSize:"24px", fontWeight:"600" }}>
+          <span
+            className="me-2"
+            style={{ color: "#FFA21A", fontSize: "24px", fontWeight: "600" }}
+          >
             2.500.000.000
           </span>
           VNĐ

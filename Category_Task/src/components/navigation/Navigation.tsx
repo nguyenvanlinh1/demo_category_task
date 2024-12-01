@@ -1,13 +1,11 @@
 import {
   Box,
   Button,
-  Divider,
   Drawer,
   Grid2,
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Typography,
   useMediaQuery,
@@ -17,6 +15,7 @@ import { FaCalendarPlus } from "react-icons/fa6";
 import { HiMiniUserCircle } from "react-icons/hi2";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const IconLogoCompany = () => {
   return (
@@ -61,9 +60,15 @@ const listCategory = [
 ];
 
 const Navigation = () => {
+  const navigate = useNavigate();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const handleClick = (index: number) => {
     setSelectedIndex(index);
+    navigate("/product");
+  };
+
+  const transferHome = () => {
+    navigate("/");
   };
 
   const isSmallScreen = useMediaQuery("(max-width: 1000px)");
@@ -80,9 +85,14 @@ const Navigation = () => {
       <List>
         {listCategory.map((item, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton sx={{color:"#2C2A29", "&:hover" : {
-              bgcolor:"#FFC900"
-            }}}>
+            <ListItemButton
+              sx={{
+                color: "#2C2A29",
+                "&:hover": {
+                  bgcolor: "#FFC900",
+                },
+              }}
+            >
               <ListItemText primary={item.categoryName} />
             </ListItemButton>
           </ListItem>
@@ -96,12 +106,16 @@ const Navigation = () => {
         <Grid2 size={3} paddingX={"8px"}>
           {!isSmallScreen ? (
             <img
+              // loading="lazy"
               src={logo}
               alt="Logo"
-              style={{ width: "100%", height: "auto", marginRight: "16px" }}
+              style={{ width: "100%", height: "auto", marginRight: "16px", cursor:"pointer" }}
+              onClick={transferHome}
             />
           ) : (
-            <IconLogoCompany />
+            <div onClick={transferHome} style={{cursor: "pointer"}}>
+              <IconLogoCompany />
+            </div>
           )}
         </Grid2>
         <Grid2 size={9}>
@@ -179,6 +193,29 @@ const Navigation = () => {
         >
           <HiMiniUserCircle size={30} />
         </div>
+        {/* <Button
+          variant="outlined"
+          sx={{
+            borderColor: "#FFA21A",
+            borderRadius: "10px",
+            color: "#FFA21A",
+            textTransform: "capitalize",
+            mr: "10px",
+          }}
+        >
+          Đăng ký
+        </Button>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#FFA21A",
+            borderRadius: "10px",
+            color: "#121110",
+            textTransform: "capitalize",
+          }}
+        >
+          Đăng nhập
+        </Button> */}
       </Grid2>
     </Grid2>
   );

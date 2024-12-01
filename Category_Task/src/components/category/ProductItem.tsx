@@ -1,6 +1,9 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
 import ImageProductItem from "../../assets/ImageProductItem.png";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useNavigate } from "react-router-dom";
+//import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const IconAddress = () => {
   return (
@@ -20,10 +23,25 @@ const IconAddress = () => {
 };
 
 const ProductItem = () => {
+  const navigate = useNavigate();
+  const transferDetailProduct = () => {
+    navigate("/product/1")
+  }
   return (
     <div className="border border-2">
       <div>
-        <img src={ImageProductItem} alt="Product Item" style={{width: "100%"}} />
+        <LazyLoadImage
+          src={ImageProductItem}
+          alt="Product Item"
+          width="100%"
+          effect="blur"
+          wrapperProps={{
+            style: { transitionDelay: "1s" },
+          }}
+          onClick={transferDetailProduct}
+          style={{cursor: "pointer"}}
+        />
+        {/* <img src={ImageProductItem} alt="Product Item" style={{width: "100%"}} /> */}
       </div>
       <Box px={3} py={2}>
         <Typography variant="h6">
@@ -45,14 +63,26 @@ const ProductItem = () => {
           <span className="me-2">Xem thông tin thêm</span>
           <FaArrowRightLong color="#FFA21A" />
         </Box>
-        <Divider sx={{ height: "2px", backgroundColor: "#B9C8FF", border: "none" }} />
+        <Divider
+          sx={{ height: "2px", backgroundColor: "#B9C8FF", border: "none" }}
+        />
         <Box mb={2}>
           <span className="me-2 fs-3" style={{ color: "#FFA21A" }}>
             2.500.000.000
           </span>
           VNĐ
         </Box>
-        <Button variant="contained" sx={{ bgcolor: "#FFA21A", color: "#121110", borderRadius:"10px", fontWeight:"600", textTransform:"capitalize"}} fullWidth>
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#FFA21A",
+            color: "#121110",
+            borderRadius: "10px",
+            fontWeight: "600",
+            textTransform: "capitalize",
+          }}
+          fullWidth
+        >
           Mua ngay
         </Button>
       </Box>
