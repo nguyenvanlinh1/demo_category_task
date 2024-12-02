@@ -1,5 +1,6 @@
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import image from "../../assets/image.png";
+import { useReducer } from "react";
 
 const IconCheck = () => {
   return (
@@ -19,8 +20,28 @@ const IconCheck = () => {
 };
 
 const Banner = () => {
+  const reducer = (state: number, action: string) => {
+    switch (action) {
+      case "Next":
+        return state + 1 > 3 ? 3 : state + 1;
+      case "Prev":
+        return state - 1 < 0 ? 0 : state - 1;
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, 0);
+
+  const handleNext = () => {
+    dispatch("Next");
+  };
+  const handlePrev = () => {
+    dispatch("Prev");
+  };
+
   return (
-    <div>
+    <div style={{ overflow: "hidden", position: "relative", width: "100%" }}>
       <div className="d-flex justify-content-between pe-4">
         <div className="d-flex align-items-center justify-content-center gap-2">
           <div
@@ -43,8 +64,9 @@ const Banner = () => {
             style={{
               borderRadius: "10px",
               aspectRatio: 1,
-              backgroundColor: "rgba(255, 162, 26, 0.15)",
+              backgroundColor: state === 0 ? "rgba(255, 162, 26, 0.15)" : "rgba(255, 162, 26, 0.3)",
             }}
+            onClick={handlePrev}
           >
             <GoArrowLeft color="#FFA21A" />
           </div>
@@ -53,39 +75,41 @@ const Banner = () => {
             style={{
               borderRadius: "10px",
               aspectRatio: 1,
-              backgroundColor: "rgba(255, 162, 26, 0.3)",
+              backgroundColor: state === 3 ? "rgba(255, 162, 26, 0.15)" : "rgba(255, 162, 26, 0.3)",
             }}
+            onClick={handleNext}
           >
             <GoArrowRight color="#FFA21A" />
           </div>
         </div>
       </div>
       <div
-        className="gap-2 d-flex overflow-hidden"
-        style={{ minHeight: "300px", marginTop: "5px" }}
+        className="d-flex gap-2 mt-2"
+        style={{
+          display: "flex",
+          transition: "transform 0.5s ease-in-out",
+          transform: `translateX(-${state * 71}%)`,
+        }}
       >
-        <div style={{ minWidth: "700px", overflow: "hidden", borderRadius:"10px" }}>
-          <img
-            src={image}
-            alt="banner1"
+        {[1, 1, 1, 1].map((_, index) => (
+          <div
+            key={index}
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
+              flex: "0 0 70%",
+              borderRadius: "10px",
             }}
-          />
-        </div>
-        <div style={{ minWidth: "700px", overflow: "hidden", borderRadius:"10px" }}>
-          <img
-            src={image}
-            alt="banner2"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-        </div>
+          >
+            <img
+              src={image}
+              alt={`banner${index}`}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

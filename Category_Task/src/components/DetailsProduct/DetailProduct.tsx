@@ -63,7 +63,7 @@ const DetailProduct = () => {
   return (
     <div>
       <Grid2 container spacing={3} padding="30px">
-        <Grid2 container size={{xs: 12, md: 8}} spacing={4}>
+        <Grid2 container size={{ xs: 12, md: 8 }} spacing={4}>
           <Grid2 size={12}>
             <div className="position-relative">
               <img
@@ -75,7 +75,7 @@ const DetailProduct = () => {
                 sx={{
                   position: "absolute",
                   top: "50%",
-                  translate:"10px -50%",
+                  translate: "10px -50%",
                   left: 0,
                   borderRadius: "10px",
                   padding: "12px",
@@ -94,7 +94,7 @@ const DetailProduct = () => {
                 sx={{
                   position: "absolute",
                   top: "50%",
-                  translate:"-10px -50%",
+                  translate: "-10px -50%",
                   right: "0",
                   borderRadius: "10px",
                   padding: "12px",
@@ -228,7 +228,7 @@ const DetailProduct = () => {
                 sx={{
                   bgcolor: "#FFA21A",
                   color: "#121110",
-                  borderRadius:"10px",
+                  borderRadius: "10px",
                   textTransform: "capitalize",
                 }}
               >
@@ -279,7 +279,7 @@ const DetailProduct = () => {
           </Grid2> */}
         </Grid2>
 
-        <Grid2 size={{xs: 12, md: 4}}>
+        <Grid2 size={{ xs: 12, md: 4 }}>
           <div className="d-flex flex-column gap-2">
             <Typography variant="h6" fontWeight={600}>
               2021 Spider 15.75 Pro Platform Basket Spider Lift
@@ -317,7 +317,7 @@ const DetailProduct = () => {
                 color: "#121110",
                 textTransform: "capitalize",
                 mt: 2,
-                borderRadius:"10px"
+                borderRadius: "10px",
               }}
             >
               <b>Mua ngay</b>

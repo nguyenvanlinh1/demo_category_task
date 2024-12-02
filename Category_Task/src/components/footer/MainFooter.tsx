@@ -46,80 +46,88 @@ const LogoComacpro = () => {
 
 const MainFooter = () => {
   return (
-    <Grid2 container padding={"50px"} bgcolor={"#FFC900"} spacing={3}>
-      <Grid2 size={{xs:12, md:2.5}} >
-        <LogoComacpro  />
-        <div style={{marginTop: "20px", textAlign: "justify"}}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur,
-          itaque quo ipsam quod mollitia, suscipit consequuntur harum
+    <>
+      <Grid2 container padding={"50px"} spacing={3} bgcolor={"#FFC900"}>
+        <Grid2 size={{ xs: 12, md: 2.5 }}>
+          <LogoComacpro />
+          <div style={{ marginTop: "20px", textAlign: "justify" }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consectetur, itaque quo ipsam quod mollitia, suscipit consequuntur
+            harum
+          </div>
+        </Grid2>
+        <Grid2 container size={9} spacing={2}>
+          <Grid2 size={{ xs: 6, md: 2.5 }}>
+            <div>
+              <Typography variant="h6">Người dùng</Typography>
+              <div>FAQS</div>
+              <div>Hướng dẫn thuê</div>
+              <div>Hướng dẫn mua</div>
+            </div>
+            <div style={{ marginTop: "20px" }}>
+              <Typography variant="h6">Đối tác</Typography>
+              <div>FAQS</div>
+              <div>Trở thành đối tác</div>
+              <div>Hướng dẫn bán</div>
+            </div>
+          </Grid2>
+          <Grid2 size={{ xs: 6, md: 2.5 }}>
+            <Typography variant="h6">Truy cập nhanh</Typography>
+            <div>Đăng ký</div>
+            <div>Về chúng tôi</div>
+            <div>Sản phẩm</div>
+            <div>Blogs</div>
+            <div>Bảo hiểm</div>
+            <div>Điều kiện</div>
+            <div>FAQS</div>
+          </Grid2>
+          <Grid2 size={{ xs: 6, md: 2.5 }}>
+            <div>
+              <Typography variant="h6">Liên hệ</Typography>
+              <div style={{ textAlign: "justify" }}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+                fugit consectetur numquam alias totam quam
+              </div>
+            </div>
+            <div style={{ marginTop: "20px" }}>
+              <Typography variant="h6">Hotlines</Typography>
+              <div>+65-8831 8705</div>
+            </div>
+          </Grid2>
+          <Grid2 size={3.5}>
+            <div>
+              <Typography variant="h6">Mạng xã hội</Typography>
+              <div className="d-flex gap-2">
+                <div>
+                  <FaXTwitter />
+                </div>
+                <div>
+                  <FaYoutube />
+                </div>
+                <div>
+                  <FaLinkedin />
+                </div>
+                <div>
+                  <FaFacebook />
+                </div>
+                <div>
+                  <FaTiktok />
+                </div>
+              </div>
+            </div>
+            <div style={{ marginTop: "80px" }}>
+              <Typography variant="h6">Email</Typography>
+              <div>info@comacpro.com</div>
+            </div>
+          </Grid2>
+        </Grid2>
+      </Grid2>
+      <Grid2 size={12} bgcolor={"#FFF"} padding={2}>
+        <div className="d-flex justify-content-center">
+          © 2024 comacPro. Ltd. All Rights Reserved
         </div>
       </Grid2>
-      <Grid2 container size={9} spacing={2}>
-        <Grid2 size={{xs: 6, md: 2.5}}>
-          <div>
-            <Typography variant="h6">Người dùng</Typography>
-            <div>FAQS</div>
-            <div>Hướng dẫn thuê</div>
-            <div>Hướng dẫn mua</div>
-          </div>
-          <div style={{marginTop: "20px"}}>
-            <Typography variant="h6">Đối tác</Typography>
-            <div>FAQS</div>
-            <div>Trở thành đối tác</div>
-            <div>Hướng dẫn bán</div>
-          </div>
-        </Grid2>
-        <Grid2 size={{xs: 6, md: 2.5}}>
-          <Typography variant="h6">Truy cập nhanh</Typography>
-          <div>Đăng ký</div>
-          <div>Về chúng tôi</div>
-          <div>Sản phẩm</div>
-          <div>Blogs</div>
-          <div>Bảo hiểm</div>
-          <div>Điều kiện</div>
-          <div>FAQS</div>
-        </Grid2>
-        <Grid2 size={{xs: 6, md: 2.5}}>
-          <div>
-            <Typography variant="h6">Liên hệ</Typography>
-            <div style={{textAlign:"justify"}}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-              fugit consectetur numquam alias totam quam
-            </div>
-          </div>
-          <div style={{marginTop: "20px"}}>
-            <Typography variant="h6">Hotlines</Typography>
-            <div>+65-8831 8705</div>
-          </div>
-        </Grid2>
-        <Grid2 size={3.5}>
-          <div>
-            <Typography variant="h6">Mạng xã hội</Typography>
-            <div className="d-flex gap-2">
-              <div>
-                <FaXTwitter />
-              </div>
-              <div>
-                <FaYoutube />
-              </div>
-              <div>
-                <FaLinkedin />
-              </div>
-              <div>
-                <FaFacebook />
-              </div>
-              <div>
-                <FaTiktok />
-              </div>
-            </div>
-          </div>
-          <div style={{ marginTop: "80px" }}>
-            <Typography variant="h6">Email</Typography>
-            <div>info@comacpro.com</div>
-          </div>
-        </Grid2>
-      </Grid2>
-    </Grid2>
+    </>
   );
 };
 
