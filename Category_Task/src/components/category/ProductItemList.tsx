@@ -56,7 +56,7 @@ const ProductItemList = () => {
             <IconAddress />
             <span className="ms-2">Hà Nội</span>
           </Box>
-          <Box className="d-flex justify-content-between" mt={2}>
+          <Box className="d-flex justify-content-between" mt={1}>
             <div>Tình trạng</div>
             <div>Đã qua sử dụng</div>
           </Box>
@@ -64,7 +64,7 @@ const ProductItemList = () => {
             <div>Thời gian bàn giao</div>
             <div>Sẵn sàng</div>
           </Box>
-          <Box className="d-flex justify-content-end align-items-center" mb={2}>
+          <Box className="d-flex justify-content-end align-items-center">
             <span className="me-2">Xem thông tin thêm</span>
             <FaArrowRightLong color="#FFA21A" />
           </Box>

@@ -41,10 +41,9 @@ const ProductItem = () => {
           onClick={transferDetailProduct}
           style={{cursor: "pointer"}}
         />
-        {/* <img src={ImageProductItem} alt="Product Item" style={{width: "100%"}} /> */}
       </div>
       <Box px={3} py={2}>
-        <Typography variant="h6">
+        <Typography variant="body1" sx={{ fontWeight: "600" }}>
           2021 Spider 15.75 Pro Platform Basket Spider Lift
         </Typography>
         <Box className="d-flex align-items-center">
@@ -67,7 +66,7 @@ const ProductItem = () => {
           sx={{ height: "2px", backgroundColor: "#B9C8FF", border: "none" }}
         />
         <Box mb={2}>
-          <span className="me-2 fs-3" style={{ color: "#FFA21A" }}>
+          <span className="me-2 fs-3" style={{ color: "#FFA21A", fontSize: "24px", fontWeight: "600" }}>
             2.500.000.000
           </span>
           VNĐ

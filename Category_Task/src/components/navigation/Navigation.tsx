@@ -93,7 +93,7 @@ const Navigation = () => {
                 },
               }}
             >
-              <ListItemText primary={item.categoryName} />
+              <ListItemText primary={item.categoryName} onClick={() => navigate("/product")}/>
             </ListItemButton>
           </ListItem>
         ))}
