@@ -1,0 +1,11 @@
+@keyframes zoomEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(1); /* Ban đầu kích thước icon bình thường */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5); /* Phóng to icon */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1); /* Trở về kích thước ban đầu */
+  }
+}

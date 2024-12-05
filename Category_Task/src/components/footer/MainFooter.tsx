@@ -56,8 +56,11 @@ const MainFooter = () => {
             harum
           </div>
         </Grid2>
-        <Grid2 container size={9} spacing={2}>
-          <Grid2 size={{ xs: 6, md: 2.5 }}>
+        <Grid2 container size={{ xs: 12, md: 9.5 }} spacing={{
+          xs: 3,
+          md: 5
+        }}>
+          <Grid2 size={{ xs: 6, md: 3 }}>
             <div>
               <Typography variant="h6">Người dùng</Typography>
               <div>FAQS</div>
@@ -71,7 +74,7 @@ const MainFooter = () => {
               <div>Hướng dẫn bán</div>
             </div>
           </Grid2>
-          <Grid2 size={{ xs: 6, md: 2.5 }}>
+          <Grid2 size={{ xs: 6, md: 3 }}>
             <Typography variant="h6">Truy cập nhanh</Typography>
             <div>Đăng ký</div>
             <div>Về chúng tôi</div>
@@ -81,7 +84,7 @@ const MainFooter = () => {
             <div>Điều kiện</div>
             <div>FAQS</div>
           </Grid2>
-          <Grid2 size={{ xs: 6, md: 2.5 }}>
+          <Grid2 size={{ xs: 6, md: 3 }}>
             <div>
               <Typography variant="h6">Liên hệ</Typography>
               <div style={{ textAlign: "justify" }}>
@@ -94,7 +97,7 @@ const MainFooter = () => {
               <div>+65-8831 8705</div>
             </div>
           </Grid2>
-          <Grid2 size={3.5}>
+          <Grid2 size={{ xs: 6, md: 3 }}>
             <div>
               <Typography variant="h6">Mạng xã hội</Typography>
               <div className="d-flex gap-2">

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ListCompany from "./components/footer/ListCompany";
-import MainFooter from "./components/footer/MainFooter";
-import Navigation from "./components/navigation/Navigation";
+import ListCompany from "./components/Footer/ListCompany";
+import MainFooter from "./components/Footer/MainFooter";
+import Navigation from "./components/Navigation/Navigation";
 import UserRouter from "./routers/UserRouter";
 
 function App() {

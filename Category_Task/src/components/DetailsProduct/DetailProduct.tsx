@@ -3,6 +3,12 @@ import ImageProductItem from "../../assets/ImageProductItem.png";
 import SliderProductItem from "../../assets/SliderProductItem.png";
 import { FaChevronDown } from "react-icons/fa";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import CustomImage from "../Format/CustomImage";
+import CustomButton, { ButtonVariant } from "../Format/CustomButton";
+import CustomArrowButton from "../Format/CustomArrowButton";
+import { useReducer } from "react";
+import ContentProductItem from "../Category/ContentProductItem";
+import { handleNumber } from "../../config/handleNumber";
 
 const IconCheck = () => {
   return (
@@ -60,55 +66,56 @@ const IconKey = () => {
 };
 
 const DetailProduct = () => {
+  const reducer = (state: number, action: string) => {
+    switch (action) {
+      case "Next":
+        return state + 1 > 3 ? 3 : state + 1;
+      case "Prev":
+        return state - 1 < 0 ? 0 : state - 1;
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, 0);
+
+  const handleNext = () => {
+    dispatch("Next");
+  };
+  const handlePrev = () => {
+    dispatch("Prev");
+  };
   return (
     <div>
       <Grid2 container spacing={3} padding="30px">
         <Grid2 container size={{ xs: 12, md: 8 }} spacing={4}>
           <Grid2 size={12}>
             <div className="position-relative">
-              <img
-                style={{ width: "100%", height: "auto", objectFit: "cover" }}
-                src={ImageProductItem}
-                alt="Product Item"
-              />
-              <Button
-                sx={{
+              <CustomImage imageUrl={ImageProductItem} />
+              <CustomArrowButton
+                onClick={handlePrev}
+                icon={<FaArrowLeftLong />}
+                disabled={state === 0}
+                style={{
                   position: "absolute",
                   top: "50%",
                   translate: "10px -50%",
                   left: 0,
-                  borderRadius: "10px",
-                  padding: "12px",
-                  color: "#FFA21A",
-                  bgcolor: "#FFFFFF26",
-                  aspectRatio: "1", // Đảm bảo tỷ lệ 1:1
-                  width: "auto", // Chiều rộng tự động
-                  height: "auto", // Chiều cao tự động
-                  minWidth: "48px", // Chiều rộng tối thiểu
-                  minHeight: "48px", // Chiều cao tối thiểu
+                  fontSize: "24px",
                 }}
-              >
-                <FaArrowLeftLong />
-              </Button>
-              <Button
-                sx={{
+              />
+              <CustomArrowButton
+                onClick={handleNext}
+                icon={<FaArrowRightLong />}
+                disabled={state === 3}
+                style={{
                   position: "absolute",
                   top: "50%",
                   translate: "-10px -50%",
                   right: "0",
-                  borderRadius: "10px",
-                  padding: "12px",
-                  color: "#FFA21A",
-                  bgcolor: "#FFFFFF26",
-                  aspectRatio: "1", // Đảm bảo tỷ lệ 1:1
-                  width: "auto", // Chiều rộng tự động
-                  height: "auto", // Chiều cao tự động
-                  minWidth: "48px", // Chiều rộng tối thiểu
-                  minHeight: "48px", // Chiều cao tối thiểu
+                  fontSize: "24px",
                 }}
-              >
-                <FaArrowRightLong />
-              </Button>
+              />
             </div>
           </Grid2>
           <Grid2
@@ -120,15 +127,7 @@ const DetailProduct = () => {
           >
             {[1, 1, 1, 1, 1, 1, 1].map((_, index) => (
               <Grid2 key={index} style={{ flex: "0 0 auto", width: "14%" }}>
-                <img
-                  src={SliderProductItem}
-                  alt={`Product ${index}`}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    objectFit: "cover",
-                  }}
-                />
+                <CustomImage imageUrl={SliderProductItem}/>
               </Grid2>
             ))}
           </Grid2>
@@ -236,70 +235,15 @@ const DetailProduct = () => {
               </Button>
             </div>
           </Grid2>
-          {/* <Grid2
-            size={12}
-            borderRadius={"10px"}
-            padding={2}
-            boxShadow={"0 0 16px 0px #000"}
-          >
-            <div className="d-flex align-items-center justify-content-between">
-              <IconKey />
-              <div className="text-center">
-                <Typography variant="h6" fontWeight={600}>
-                  Đăng nhập
-                </Typography>
-                <div>
-                  Bạn cần đăng nhập để xem thêm ảnh và thông số kỹ thuật sản
-                  phẩm
-                </div>
-                <div>
-                  <span>Bạn chưa có tài khoản?</span>
-                  <Button
-                    variant="text"
-                    sx={{
-                      color: "#1A77FF",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    Đăng ký ngay
-                  </Button>
-                </div>
-              </div>
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#FFA21A",
-                  color: "#121110",
-                  textTransform: "capitalize",
-                }}
-              >
-                Đăng nhập
-              </Button>
-            </div>
-          </Grid2> */}
         </Grid2>
 
         <Grid2 size={{ xs: 12, md: 4 }}>
-          <div className="d-flex flex-column gap-2">
-            <Typography variant="h6" fontWeight={600}>
-              2021 Spider 15.75 Pro Platform Basket Spider Lift
-            </Typography>
-            <Box className="d-flex align-items-center">
-              <IconAddress />
-              <span className="ms-2">Hà Nội</span>
-            </Box>
-            <Box className="d-flex justify-content-between" mb={1}>
-              <div>Tình trạng</div>
-              <b>Đã qua sử dụng</b>
-            </Box>
-            <Box className="d-flex justify-content-between" mb={2}>
-              <div>Thời gian bàn giao</div>
-              <b>Sẵn sàng</b>
-            </Box>
-            <Divider sx={{ border: "1px solid black" }} />
+          <ContentProductItem />
+          <Divider sx={{ border: "1px solid black" }} />
+          <Box padding={3}>
             <Box mb={2}>
               <span className="me-2 fs-3" style={{ color: "#FFA21A" }}>
-                2.500.000.000
+                {handleNumber(2500000000)}
               </span>
               VNĐ
             </Box>
@@ -309,20 +253,12 @@ const DetailProduct = () => {
               chúng tôi trong vòng 24 giờ làm việc. Hãy nhớ truy cập trang web
               và kiểm tra hộp thư đến của bạn để biết thông tin cập nhật.
             </Typography>
-            <Button
-              variant="contained"
-              fullWidth
-              sx={{
-                bgcolor: "#FFA21A",
-                color: "#121110",
-                textTransform: "capitalize",
-                mt: 2,
-                borderRadius: "10px",
-              }}
-            >
-              <b>Mua ngay</b>
-            </Button>
-          </div>
+            <CustomButton
+              typeButton={ButtonVariant.CONTAINED}
+              name="Mua ngay"
+              opacity="0.8"
+            />
+          </Box>
         </Grid2>
       </Grid2>
     </div>

@@ -1,5 +1,6 @@
 import { Box, Button, Grid2, Typography } from "@mui/material";
 import ProductItemBanner from "../../assets/ProductItemBanner.png";
+import CustomImage from "../Format/CustomImage";
 
 const BannerHomePage = () => {
   return (
@@ -87,7 +88,8 @@ const BannerHomePage = () => {
           >
             Cho thuê
           </Button>
-          <span className="mx-3 d-none d-lg-inline">Hoặc</span>
+          {/* <CustomButton/> */}
+          <span className="mx-3 d-none d-xl-inline">Hoặc</span>
           <Button
             variant="contained"
             size="small"
@@ -97,7 +99,7 @@ const BannerHomePage = () => {
               borderRadius: "100px",
               display: {
                 xs: "none",
-                lg: "block",
+                lg: "inline",
               },
             }}
           >
@@ -105,22 +107,20 @@ const BannerHomePage = () => {
           </Button>
         </Box>
         <Grid2 size={7} position={"relative"} display={"flex"} my={3}>
-          <img
-            src={ProductItemBanner}
-            style={{ objectFit: "cover", width: "100%", height: "auto" }}
-          ></img>
+          <CustomImage imageUrl={ProductItemBanner}/>
           <Box
             className="position-absolute d-flex gap-1"
             sx={{
-                bottom:{
-                    xs: "-15px",
-                    md: "10px"
-                },
-                right:{
-                    xs: "70%",
-                    sm: "80%",
-                    md: "10px"
-                }
+              bottom: {
+                xs: "-15px",
+                sm: "-10px",
+                md: "30px",
+              },
+              right: {
+                xs: "75%",
+                sm: "78%",
+                md: "80%",
+              },
             }}
           >
             {[1, 1, 1, 1].map((_, index) => (

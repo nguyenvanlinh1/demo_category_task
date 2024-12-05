@@ -1,6 +1,8 @@
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import image from "../../assets/image.png";
 import { useReducer } from "react";
+import CustomArrowButton from "../Format/CustomArrowButton";
+import CustomImage from "../Format/CustomImage";
 
 const IconCheck = () => {
   return (
@@ -59,55 +61,26 @@ const Banner = () => {
           </div>
         </div>
         <div className="d-flex gap-2">
-          <div
-            className="p-2 border d-flex justify-content-center align-items-center"
-            style={{
-              borderRadius: "10px",
-              aspectRatio: 1,
-              backgroundColor: state === 0 ? "rgba(255, 162, 26, 0.15)" : "rgba(255, 162, 26, 0.3)",
-            }}
-            onClick={handlePrev}
-          >
-            <GoArrowLeft color="#FFA21A" />
-          </div>
-          <div
-            className="p-2 border d-flex justify-content-center align-items-center"
-            style={{
-              borderRadius: "10px",
-              aspectRatio: 1,
-              backgroundColor: state === 3 ? "rgba(255, 162, 26, 0.15)" : "rgba(255, 162, 26, 0.3)",
-            }}
-            onClick={handleNext}
-          >
-            <GoArrowRight color="#FFA21A" />
-          </div>
+          <CustomArrowButton onClick={handlePrev} icon={<GoArrowLeft color="#FFA21A" />} disabled={state===0}/>
+          <CustomArrowButton onClick={handleNext} icon={<GoArrowRight color="#FFA21A" />} disabled={state===3}/>
         </div>
       </div>
       <div
         className="d-flex gap-2 mt-2"
         style={{
-          display: "flex",
           transition: "transform 0.5s ease-in-out",
           transform: `translateX(-${state * 71}%)`,
         }}
       >
-        {[1, 1, 1, 1].map((_, index) => (
+        {[1, 2, 3, 4].map((_, index) => (
           <div
             key={index}
             style={{
-              flex: "0 0 70%",
+              flex: "1 0 70%",
               borderRadius: "10px",
             }}
           >
-            <img
-              src={image}
-              alt={`banner${index}`}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+            <CustomImage imageUrl={image} alt={`Image ${index}`}/>
           </div>
         ))}
       </div>

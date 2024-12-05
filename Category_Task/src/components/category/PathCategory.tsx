@@ -1,26 +1,21 @@
-import { Breadcrumbs, Grid2, Link, Typography } from "@mui/material";
+import {Grid2} from "@mui/material";
+import CustomText, { TypographyVariant } from "../Format/CustomText";
+import CustomBreadCrumbs from "../Format/CustomBreadCrumbs";
 
 const PathCategory = () => {
   return (
     <div>
       <Grid2 container spacing={2} padding={"20px"} bgcolor={"#FFC900"}>
         <Grid2 size={12} display="flex" justifyContent="center">
-          <Typography variant="h4" sx={{fontWeight: 600, color:"#2C2A29"}}>Danh sách thiết bị thang nâng</Typography>
+          <CustomText
+            variantTypo={TypographyVariant.H4}
+            fontWeight={600}
+            color="#2C2A29"
+            title="Danh sách thiết bị thang nâng"
+          />
         </Grid2>
         <Grid2 size={12} display="flex" justifyContent="center">
-          <Breadcrumbs aria-label="breadcrumb">
-            <Link underline="hover" color="inherit" href="/">
-              Bán
-            </Link>
-            <Link
-              underline="hover"
-              color="inherit"
-              href="/material-ui/getting-started/installation/"
-            >
-              Aerial Working Platform
-            </Link>
-            <Typography variant="body1" color="#2C2A29" fontWeight="600">Scissor Lift</Typography>
-          </Breadcrumbs>
+          <CustomBreadCrumbs />
         </Grid2>
       </Grid2>
     </div>

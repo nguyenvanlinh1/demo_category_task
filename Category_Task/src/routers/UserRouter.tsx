@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
-import MainCategory from "../components/category/MainCategory"
+import MainCategory from "../components/Category/MainCategory"
 import DetailProduct from "../components/DetailsProduct/DetailProduct"
-import HomePage from "../components/homepages/HomePage"
+import HomePage from "../components/Home/HomePage"
 
 const UserRouter = () => {
   return (

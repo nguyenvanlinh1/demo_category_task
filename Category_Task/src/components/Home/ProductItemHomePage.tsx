@@ -1,23 +1,12 @@
 import { Box, Divider, Typography } from "@mui/material";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import ImageProductItem from "../../assets/ImageProductItem.png";
 import { GiRoundStar } from "react-icons/gi";
+import CustomImage from "../Format/CustomImage";
 
 const ProductItemHomePage = () => {
   return (
-    <div style={{borderRadius:"10px", boxShadow:"0 0 16px 0 #001942"}}>
-      <div>
-        <LazyLoadImage
-          src={ImageProductItem}
-          alt="Product Item"
-          width="100%"
-          effect="blur"
-          wrapperProps={{
-            style: { transitionDelay: "1s" },
-          }}
-          style={{ cursor: "pointer", borderRadius:"10px" }}
-        />
-      </div>
+    <div style={{borderRadius:"10px", border:"2px solid #E1DEDD"}}>
+      <CustomImage imageUrl={ImageProductItem} style={{borderTopLeftRadius: "10px", borderTopRightRadius:"10px"}}/>
       <Box px={3} py={2}>
         <Typography variant="body1" fontWeight={600}>
           2021 Spider 15.75 Pro Platform Basket Spider Lift
@@ -44,10 +33,10 @@ const ProductItemHomePage = () => {
         <Divider
           sx={{ height: "2px", backgroundColor: "#B9C8FF", border: "none" }}
         />
-        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-          <span style={{ color: "#FFA21A" }}>S$2000</span>/day
-          <span style={{ color: "#FFA21A" }}>S$2000</span>/week
-          <span style={{ color: "#FFA21A" }}>S$2000</span>/month
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+          <span><span style={{ color: "#FFA21A" }}>S$2000</span> /day</span>
+          <span><span style={{ color: "#FFA21A" }}>S$2000</span>/week</span>
+          <span><span style={{ color: "#FFA21A" }}>S$2000</span>/month</span>
         </Box>
       </Box>
     </div>

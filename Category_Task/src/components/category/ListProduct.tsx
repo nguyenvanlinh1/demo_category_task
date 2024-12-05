@@ -1,9 +1,11 @@
-import { Grid2, Pagination, Typography } from "@mui/material";
+import { Grid2} from "@mui/material";
 import { SlGrid } from "react-icons/sl";
 import { BsPrinter } from "react-icons/bs";
 import { useState } from "react";
 import ProductItem from "./ProductItem";
 import ProductItemList from "./ProductItemList";
+import CustomText, { TypographyVariant } from "../Format/CustomText";
+import CustomPagination from "../Format/CustomPagination";
 
 const ListProduct = () => {
   const [isCheck, setIsCheck] = useState(false);
@@ -16,7 +18,7 @@ const ListProduct = () => {
     <div className="mt-3">
       <div className="d-flex justify-content-between align-items-center">
         <div className="px-3 py-1" style={{ borderLeft: "8px solid #FFA21A" }}>
-          <Typography variant="h4" color="#2C2A29">Danh sách thang nâng</Typography>
+          <CustomText variantTypo={TypographyVariant.H4} fontWeight={600} title="Danh sách thang nâng"/>
         </div>
         <div className="d-flex gap-2">
           <div onClick={handleCheck}>
@@ -39,27 +41,7 @@ const ListProduct = () => {
                 </Grid2>
               ))}
           <Grid2 size={12} display={"flex"} justifyContent={"center"}>
-            <Pagination
-              count={10}
-              variant="outlined"
-              shape="rounded"
-              hideNextButton
-              hidePrevButton
-              sx={{
-                "& .MuiPaginationItem-root": {
-                  backgroundColor: "#fff", // Màu nền cho các nút
-                  color: "#121110", // Màu chữ cho các nút
-                  "&:hover": {
-                    backgroundColor: "#FFA21A", // Màu nền khi hover
-                  },
-                },
-                "& .Mui-selected": {
-                  backgroundColor: "#FFA21A", // Nền khi nút được chọn
-                  color: "#121110", // Màu chữ khi nút được chọn
-                  border: "none",
-                },
-              }}
-            />
+            <CustomPagination count={10}/>
           </Grid2>
         </Grid2>
       </div>

@@ -16,6 +16,7 @@ import { HiMiniUserCircle } from "react-icons/hi2";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import CustomProgress from "../Format/CustomProgress";
 
 const IconLogoCompany = () => {
   return (
@@ -62,9 +63,15 @@ const listCategory = [
 const Navigation = () => {
   const navigate = useNavigate();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isLoading, setLoading] = useState(false);
+
   const handleClick = (index: number) => {
     setSelectedIndex(index);
-    navigate("/product");
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/product");
+      setLoading(false);
+    }, 1000);
   };
 
   const transferHome = () => {
@@ -93,7 +100,10 @@ const Navigation = () => {
                 },
               }}
             >
-              <ListItemText primary={item.categoryName} onClick={() => navigate("/product")}/>
+              <ListItemText
+                primary={item.categoryName}
+                onClick={() => navigate("/product")}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -101,99 +111,105 @@ const Navigation = () => {
     </Box>
   );
   return (
-    <Grid2 container sx={{ padding: "20px" }}>
-      <Grid2 container size={10} alignItems={"center"}>
-        <Grid2 size={3} paddingX={"8px"}>
-          {!isSmallScreen ? (
-            <img
-              // loading="lazy"
-              src={logo}
-              alt="Logo"
-              style={{ width: "100%", height: "auto", marginRight: "16px", cursor:"pointer" }}
-              onClick={transferHome}
-            />
-          ) : (
-            <div onClick={transferHome} style={{cursor: "pointer"}}>
-              <IconLogoCompany />
-            </div>
-          )}
-        </Grid2>
-        <Grid2 size={9}>
-          {!isSmallScreen && (
-            <>
-              {listCategory.map((item, index) => (
-                <Button
-                  variant="text"
-                  key={index}
-                  onClick={() => handleClick(index)}
-                  sx={{
-                    backgroundColor:
-                      selectedIndex === index ? "#FFEFD5" : "transparent",
-                    "&:hover": {
-                      backgroundColor: "#FFEFD5",
-                    },
-                    paddingX: "20px",
-                    paddingY: "8px",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    color="black"
-                    sx={{ textTransform: "capitalize", fontWeight: 600 }}
+    <>
+      <Grid2 container sx={{ padding: "20px" }}>
+        <Grid2 container size={10} alignItems={"center"}>
+          <Grid2 size={3} paddingX={"8px"}>
+            {!isSmallScreen ? (
+              <img
+                // loading="lazy"
+                src={logo}
+                alt="Logo"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  marginRight: "16px",
+                  cursor: "pointer",
+                }}
+                onClick={transferHome}
+              />
+            ) : (
+              <div onClick={transferHome} style={{ cursor: "pointer" }}>
+                <IconLogoCompany />
+              </div>
+            )}
+          </Grid2>
+          <Grid2 size={9}>
+            {!isSmallScreen && (
+              <>
+                {listCategory.map((item, index) => (
+                  <Button
+                    variant="text"
+                    key={index}
+                    onClick={() => handleClick(index)}
+                    sx={{
+                      backgroundColor:
+                        selectedIndex === index ? "#FFEFD5" : "transparent",
+                      "&:hover": {
+                        backgroundColor: "#FFEFD5",
+                      },
+                      paddingX: "20px",
+                      paddingY: "8px",
+                      borderRadius: "10px",
+                    }}
                   >
-                    {item.categoryName}
-                  </Typography>
-                </Button>
-              ))}
-            </>
-          )}
-          {isSmallScreen && (
-            <IoMenu
-              onClick={toggleDrawer(true)}
-              style={{ display: "inline", cursor: "pointer" }}
-              size={30}
-            />
-          )}
-          <Drawer open={open} onClose={toggleDrawer(false)}>
-            {DrawerList}
-          </Drawer>
+                    <Typography
+                      variant="body1"
+                      color="black"
+                      sx={{ textTransform: "capitalize", fontWeight: 600 }}
+                    >
+                      {item.categoryName}
+                    </Typography>
+                  </Button>
+                ))}
+              </>
+            )}
+            {isSmallScreen && (
+              <IoMenu
+                onClick={toggleDrawer(true)}
+                style={{ display: "inline", cursor: "pointer" }}
+                size={30}
+              />
+            )}
+            <Drawer open={open} onClose={toggleDrawer(false)}>
+              {DrawerList}
+            </Drawer>
+          </Grid2>
         </Grid2>
-      </Grid2>
-      <Grid2 size={2} display={"flex"} justifyContent={"flex-end"}>
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: "#FFA21A",
-            borderRadius: "10px",
-            marginRight: "10px",
-            color: "#121110",
-            textTransform: "capitalize",
-          }}
-          startIcon={<FaCalendarPlus />}
-        >
-          <Typography
-            variant="subtitle2"
-            sx={{ display: { xs: "none", lg: "block" } }}
+        <Grid2 size={2} display={"flex"} justifyContent={"flex-end"}>
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "#FFA21A",
+              borderRadius: "10px",
+              marginRight: "10px",
+              color: "#121110",
+              textTransform: "capitalize",
+            }}
+            startIcon={<FaCalendarPlus />}
           >
-            Đăng sản phẩm
-          </Typography>
-        </Button>
-        <div
-          style={{
-            backgroundColor: "#FFA21A",
-            borderRadius: "10px",
-            color: "#121110",
-            aspectRatio: 1,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          <HiMiniUserCircle size={30} />
-        </div>
-        {/* <Button
+            <Typography
+              variant="subtitle2"
+              sx={{ display: { xs: "none", lg: "block" } }}
+            >
+              Đăng sản phẩm
+            </Typography>
+          </Button>
+          <div
+            style={{
+              backgroundColor: "#FFA21A",
+              borderRadius: "10px",
+              color: "#121110",
+              aspectRatio: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
+            <HiMiniUserCircle size={30} />
+          </div>
+          {/* <Button
           variant="outlined"
           sx={{
             borderColor: "#FFA21A",
@@ -216,8 +232,14 @@ const Navigation = () => {
         >
           Đăng nhập
         </Button> */}
+        </Grid2>
       </Grid2>
-    </Grid2>
+      {isLoading && (
+        <Grid2 size={12}>
+          <CustomProgress />
+        </Grid2>
+      )}
+    </>
   );
 };
 
