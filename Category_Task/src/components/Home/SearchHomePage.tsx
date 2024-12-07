@@ -47,6 +47,8 @@ const SearchHomePage = () => {
               variantTypo={TypographyVariant.BODY1}
               fontWeight={600}
               title="Danh mục"
+              onDrop={(e) => e.preventDefault()}
+              onDragOver={(e) => e.preventDefault}
             />
             <Divider
               sx={{
@@ -125,6 +127,8 @@ const SearchHomePage = () => {
               variantTypo={TypographyVariant.BODY1}
               fontWeight={600}
               title="Vị trí"
+              onDrop={(e) => e.preventDefault()}
+              onDragOver={(e) => e.preventDefault}
             />
           </Grid2>
         </Grid2>

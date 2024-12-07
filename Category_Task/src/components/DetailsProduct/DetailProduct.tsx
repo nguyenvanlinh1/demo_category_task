@@ -6,9 +6,10 @@ import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import CustomImage from "../Format/CustomImage";
 import CustomButton, { ButtonVariant } from "../Format/CustomButton";
 import CustomArrowButton from "../Format/CustomArrowButton";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import ContentProductItem from "../Category/ContentProductItem";
 import { handleNumber } from "../../config/handleNumber";
+import InfoList from "./InforList";
 
 const IconCheck = () => {
   return (
@@ -27,45 +28,21 @@ const IconCheck = () => {
   );
 };
 
-const IconAddress = () => {
-  return (
-    <svg
-      width="16"
-      height="17"
-      viewBox="0 0 16 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M13.7467 6.13335C13.0467 3.05335 10.3601 1.66669 8.00006 1.66669C8.00006 1.66669 8.00006 1.66669 7.9934 1.66669C5.64006 1.66669 2.94673 3.04669 2.24673 6.12669C1.46673 9.56669 3.5734 12.48 5.48006 14.3134C6.18673 14.9934 7.0934 15.3334 8.00006 15.3334C8.90673 15.3334 9.8134 14.9934 10.5134 14.3134C12.4201 12.48 14.5267 9.57335 13.7467 6.13335ZM8.00006 9.47335C6.84006 9.47335 5.90006 8.53335 5.90006 7.37335C5.90006 6.21335 6.84006 5.27335 8.00006 5.27335C9.16006 5.27335 10.1001 6.21335 10.1001 7.37335C10.1001 8.53335 9.16006 9.47335 8.00006 9.47335Z"
-        fill="#FFA21A"
-      />
-    </svg>
-  );
-};
+const data1 = [
+  { label: "Equipment Id", value: "TE-0324-1433" },
+  { label: "Brand", value: "Hedi" },
+  { label: "Model", value: "CBD15J" },
+  { label: "Manufacture", value: "2022" },
+  { label: "Lead Time", value: "1 tuần" },
+];
 
-const IconKey = () => {
-  return (
-    <svg
-      width="51"
-      height="61"
-      viewBox="0 0 51 61"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M42.7019 33.8559H37.831V17.7475C37.831 10.7166 32.1113 4.997 25.0804 4.997C18.0495 4.997 12.3299 10.7166 12.3299 17.7475V33.8559H7.45898V17.7475C7.45789 8.03082 15.3626 0.125 25.0793 0.125C34.7961 0.125 42.7019 8.03082 42.7019 17.7475V33.8559Z"
-        fill="#4C4A48"
-      />
-      <path
-        d="M48.2695 26.2119H1.88945C0.845938 26.2119 0 27.0579 0 28.1014V58.2355C0 59.2791 0.845938 60.125 1.88945 60.125H48.2695C49.313 60.125 50.1589 59.2791 50.1589 58.2355V28.1014C50.1589 27.0579 49.313 26.2119 48.2695 26.2119Z"
-        fill="#FFC900"
-      />
-    </svg>
-  );
-};
+const data2 = [
+  { label: "Width Across Fork", value: "685 mm" },
+  { label: "Working Câpcity", value: "1.5 tấn" },
+];
 
 const DetailProduct = () => {
+
   const reducer = (state: number, action: string) => {
     switch (action) {
       case "Next":
@@ -127,7 +104,7 @@ const DetailProduct = () => {
           >
             {[1, 1, 1, 1, 1, 1, 1].map((_, index) => (
               <Grid2 key={index} style={{ flex: "0 0 auto", width: "14%" }}>
-                <CustomImage imageUrl={SliderProductItem}/>
+                <CustomImage imageUrl={SliderProductItem} />
               </Grid2>
             ))}
           </Grid2>
@@ -140,30 +117,7 @@ const DetailProduct = () => {
             <Typography variant="h6" fontWeight={600} mb={1}>
               General Information <FaChevronDown />
             </Typography>
-            <div
-              style={{ gap: "8px", display: "flex", flexDirection: "column" }}
-            >
-              <div className="d-flex justify-content-between">
-                <div>Equipment Id</div>
-                <div>TE-0324-1433</div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>Brand</div>
-                <div>Hedi</div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>Model</div>
-                <div>CBD15J</div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>Manufacture</div>
-                <div>2022</div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>Lead Time</div>
-                <div>1 tuần</div>
-              </div>
-            </div>
+            <InfoList items={data1} />
           </Grid2>
           <Grid2
             size={12}
@@ -174,18 +128,7 @@ const DetailProduct = () => {
             <Typography variant="h6" fontWeight={600} mb={1}>
               <i>Technical Information</i> <FaChevronDown />
             </Typography>
-            <div
-              style={{ gap: "8px", display: "flex", flexDirection: "column" }}
-            >
-              <div className="d-flex justify-content-between">
-                <div>Width Across Fork</div>
-                <div>685 mm</div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>Working Câpcity</div>
-                <div>1.5 tấn</div>
-              </div>
-            </div>
+            <InfoList items={data2} />
           </Grid2>
           <Grid2
             size={12}

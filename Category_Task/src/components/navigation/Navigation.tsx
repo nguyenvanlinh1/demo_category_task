@@ -112,6 +112,11 @@ const Navigation = () => {
   );
   return (
     <>
+      {isLoading && (
+        <Grid2 container size={12}>
+          <CustomProgress />
+        </Grid2>
+      )}
       <Grid2 container sx={{ padding: "20px" }}>
         <Grid2 container size={10} alignItems={"center"}>
           <Grid2 size={3} paddingX={"8px"}>
@@ -187,6 +192,7 @@ const Navigation = () => {
               textTransform: "capitalize",
             }}
             startIcon={<FaCalendarPlus />}
+            onClick={() => navigate("/post")}
           >
             <Typography
               variant="subtitle2"
@@ -234,11 +240,6 @@ const Navigation = () => {
         </Button> */}
         </Grid2>
       </Grid2>
-      {isLoading && (
-        <Grid2 size={12}>
-          <CustomProgress />
-        </Grid2>
-      )}
     </>
   );
 };

@@ -5,15 +5,24 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import CustomText, { PropsText } from "./CustomText";
-import { useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 interface Props extends PropsText {
-  lable: string,
-  isBorder?: boolean,
-  listItem: number[] | string[],
+  lable: string;
+  isBorder?: boolean;
+  listItem: number[] | string[];
   paddingY?: string;
+  icon?: ReactNode;
 }
-const CustomSelect = ({ isBorder=true, title, fontWeight, variantTypo, listItem, paddingY }: Props) => {
+const CustomSelect = ({
+  isBorder = true,
+  title,
+  fontWeight,
+  variantTypo,
+  listItem,
+  paddingY,
+  icon,
+}: Props) => {
   const [item, setItem] = useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -21,21 +30,30 @@ const CustomSelect = ({ isBorder=true, title, fontWeight, variantTypo, listItem,
   };
 
   return (
-    <div style={{padding:"5px", width: "100%", borderRadius:"10px", border: isBorder ? "1px solid #DEE2E6" : "none"}}>
-      <div className="ms-3">
-      <CustomText
-        title={title}
-        fontWeight={fontWeight}
-        variantTypo={variantTypo}
-      />
+    <div
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+        // border: isBorder ? "1px solid #DEE2E6" : "none",
+      }}
+    >
+      <div className={`${!isBorder ? "ms-3" : ""}`}>
+        <CustomText
+          title={title}
+          fontWeight={fontWeight}
+          variantTypo={variantTypo}
+        />
       </div>
-      <FormControl sx={{ width: "100%"}}>
-        {/* <InputLabel 
-          sx={{
-            display: open || item !== "" ? "none" : "block",
-            transition: "all 0.2s ease",
-            fontSize: "16px",
-          }}>{lable}</InputLabel> */}
+      <FormControl
+        sx={{
+          display: "flex",
+          flexDirection: "row", // Đặt các phần tử theo hàng ngang
+          alignItems: "center", // Căn chỉnh theo chiều dọc
+          gap: "8px", // Khoảng cách giữa icon và Select
+          width: "100%", // Đảm bảo toàn bộ chiều rộng
+        }}
+      >
+        {icon && <div>{icon}</div>}
         <Select
           value={item}
           onChange={handleChange}
@@ -43,15 +61,19 @@ const CustomSelect = ({ isBorder=true, title, fontWeight, variantTypo, listItem,
             "& .MuiSelect-select": {
               border: "none",
               outline: "none",
+              padding: "12px 15px",
               ...(paddingY !== undefined && { paddingY: `${paddingY}` }),
             },
             "& .MuiOutlinedInput-notchedOutline": {
-              border: "none",
+              border: isBorder ? "1px solid #DEE2E6" : "none",
             },
+            width: "100%"
           }}
           displayEmpty
         >
-          <MenuItem value="" selected>Tất cả tình trạng</MenuItem>
+          <MenuItem value="" selected>
+            Tất cả tình trạng
+          </MenuItem>
           {listItem?.map((index) => (
             <MenuItem
               key={index}

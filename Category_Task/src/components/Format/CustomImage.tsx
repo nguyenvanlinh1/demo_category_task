@@ -47,8 +47,10 @@ const CustomImage = ({ imageUrl, alt, style, sx }: Props) => {
         loading="lazy"
         style={{
           width: "100%",
-          height: "auto",
-          objectFit: "cover",
+          height: "auto", // Điều chỉnh chiều cao tự động để duy trì tỷ lệ
+          maxWidth: "100%", // Đảm bảo hình ảnh không vượt quá chiều rộng của Box
+          maxHeight: "300px",
+          objectFit: "cover", // Điều chỉnh để hình ảnh không bị cắt
           cursor: "pointer",
           opacity: hoverIcon ? "0.5" : "1",
           ...style,

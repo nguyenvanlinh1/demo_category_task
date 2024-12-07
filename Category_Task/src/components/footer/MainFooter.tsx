@@ -1,4 +1,4 @@
-import { Grid2, Typography } from "@mui/material";
+import { Grid2, Link, Typography } from "@mui/material";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -56,10 +56,14 @@ const MainFooter = () => {
             harum
           </div>
         </Grid2>
-        <Grid2 container size={{ xs: 12, md: 9.5 }} spacing={{
-          xs: 3,
-          md: 5
-        }}>
+        <Grid2
+          container
+          size={{ xs: 12, md: 9.5 }}
+          spacing={{
+            xs: 3,
+            md: 5,
+          }}
+        >
           <Grid2 size={{ xs: 6, md: 3 }}>
             <div>
               <Typography variant="h6">Người dùng</Typography>
@@ -94,7 +98,7 @@ const MainFooter = () => {
             </div>
             <div style={{ marginTop: "20px" }}>
               <Typography variant="h6">Hotlines</Typography>
-              <div>+65-8831 8705</div>
+              <Link href="tel:+84869526280">+65-8831 8705</Link>
             </div>
           </Grid2>
           <Grid2 size={{ xs: 6, md: 3 }}>
@@ -120,7 +124,13 @@ const MainFooter = () => {
             </div>
             <div style={{ marginTop: "80px" }}>
               <Typography variant="h6">Email</Typography>
-              <div>info@comacpro.com</div>
+              <Link
+                href="mailto:nvanlinh1406@gmail.com?subject=Subject%20Text&body=Body%20Text"
+                color="primary"
+                underline="hover"
+              >
+                info@comacpro.com
+              </Link>
             </div>
           </Grid2>
         </Grid2>

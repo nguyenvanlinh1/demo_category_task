@@ -13,7 +13,7 @@ const BannerHomePage = () => {
         position={"relative"}
       >
         <Grid2
-          size={5}
+          size={6}
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
@@ -30,7 +30,7 @@ const BannerHomePage = () => {
             variant="h4"
             fontWeight={600}
             sx={{
-              fontSize: { xs: "14px", sm: "28px", md: "50px" },
+              fontSize: { xs: "14px", sm: "28px", md: "40px" },
             }}
           >
             Nền tảng cho thuê B2B lớn nhất Việt Nam
@@ -40,7 +40,7 @@ const BannerHomePage = () => {
             sx={{
               fontSize: {
                 xs: "10px",
-                md: "30px",
+                md: "28px",
               },
             }}
           >
@@ -63,7 +63,7 @@ const BannerHomePage = () => {
               color: "#121110",
               width: {
                 xs: "50%",
-                lg: "132px",
+                md: "132px",
               },
               height: "45px",
               borderRadius: "0",
@@ -79,7 +79,7 @@ const BannerHomePage = () => {
               color: "#4C4A48",
               width: {
                 xs: "50%",
-                lg: "132px",
+                md: "132px",
               },
               height: "45px",
               borderRadius: "0",
@@ -106,7 +106,7 @@ const BannerHomePage = () => {
             Gửi yêu cầu của bạn
           </Button>
         </Box>
-        <Grid2 size={7} position={"relative"} display={"flex"} my={3}>
+        <Grid2 size={6} position={"relative"} display={"flex"} alignItems={"center"} justifyContent={"center"} my={3}>
           <CustomImage imageUrl={ProductItemBanner}/>
           <Box
             className="position-absolute d-flex gap-1"
@@ -114,12 +114,11 @@ const BannerHomePage = () => {
               bottom: {
                 xs: "-15px",
                 sm: "-10px",
-                md: "30px",
+                md: -5,
               },
               right: {
-                xs: "75%",
-                sm: "78%",
-                md: "80%",
+                xs: "90%",
+                md: 10,
               },
             }}
           >

@@ -1,7 +1,7 @@
 import { Grid2, Typography } from "@mui/material";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import ProductItemHomePage from "./ProductItemHomePage";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import CustomArrowButton from "../Format/CustomArrowButton";
 
 type ListCategory = {
@@ -22,6 +22,16 @@ const ListProductHomePage = ({ title }: ListCategory) => {
 
   const [state, dispatch] = useReducer(reducer, 0);
 
+  useEffect(() => {
+    // Cập nhật state sau 5 giây (5000ms)
+    const timer = setTimeout(() => {
+      dispatch("Next")
+    }, 5000);
+
+    // Dọn dẹp timer khi component bị hủy hoặc count thay đổi
+    return () => clearTimeout(timer);
+  }, [state]);
+
   const handleNext = () => {
     dispatch("Next");
   };
@@ -29,7 +39,7 @@ const ListProductHomePage = ({ title }: ListCategory) => {
     dispatch("Prev");
   };
   return (
-    <div className="py-3">
+    <div className="py-3" style={{overflow: "hidden"}}>
       <div className="d-flex justify-content-between">
         <div className="my-4 px-2" style={{ borderLeft: "8px solid #FFA21A" }}>
           <Typography variant="h5" color="#2C2A29" fontWeight={600}>
@@ -57,14 +67,17 @@ const ListProductHomePage = ({ title }: ListCategory) => {
         spacing={3}
         display={"flex"}
         flexWrap={"nowrap"}
-        overflow={"hidden"}
+        sx={{
+          transition: "transform 0.5s ease-in-out",
+          transform: `translateX(-${state * 20.35}%)`,
+        }}
       >
-        {[1, 1, 1, 1, 1].map((_, index) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
           <Grid2
             key={index}
             size={{ xs: 9, sm: 5, lg: 2.4 }}
             sx={{
-              flex: "0 0 auto",
+              flex: "1 0 20%",
             }}
           >
             <ProductItemHomePage />

@@ -1,5 +1,6 @@
-import { TextField } from "@mui/material";
-import { ReactNode } from "react";
+import { Box, TextField } from "@mui/material";
+import { ReactNode, useState } from "react";
+import CustomText, { TypographyVariant } from "./CustomText";
 
 export enum TextFieldVariant {
   OUTLINED = "outlined",
@@ -8,22 +9,67 @@ export enum TextFieldVariant {
 }
 
 interface Props {
-  icon: ReactNode;
-  label: string;
+  name?:string;
+  title?: string;
+  icon?: ReactNode;
+  value: string; // Nhận giá trị từ parent
+  lable?: string;
   variantText: TextFieldVariant;
+  multiline?: boolean;
+  rows?: number;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CustomTextField = ({ icon, label, variantText }: Props) => {
+const CustomTextField = ({
+  name,
+  title,
+  icon,
+  value,
+  lable,
+  variantText,
+  multiline,
+  rows,
+  onChange
+}: Props) => {
   return (
-    <div className="d-flex align-items-center">
-      <div>{icon}</div>
-      <div>
+    <Box>
+      <CustomText
+        variantTypo={TypographyVariant.BODY1}
+        fontWeight={600}
+        title={title}
+      />
+      <div className="d-flex align-items-center">
+        {icon && <div>{icon}</div>}
         <TextField
-          label={label}
+          name={name}
+          value={value}
+          onChange={onChange}
+          label={lable}
           variant={variantText}
+          multiline={multiline}
+          rows={rows}
+          onDrop={(e) => e.preventDefault()}
+          onDragOver={(e) => e.preventDefault()}
+          sx={{
+            "& .MuiFilledInput-root": {
+              "&:before": {
+                borderBottom: "none", // Xóa gạch chân mặc định
+              },
+              "&:after": {
+                borderBottom: "none", // Xóa gạch chân khi active
+              },
+              "&:hover:not(.Mui-disabled):before": {
+                borderBottom: "none", // Xóa gạch chân khi hover
+              },
+            },
+            "& .MuiInputBase-input": {
+              padding: "12px 15px", // Thêm padding
+            },
+          }}
+          fullWidth
         />
       </div>
-    </div>
+    </Box>
   );
 };
 
