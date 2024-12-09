@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom"
-import MainCategory from "../components/Category/MainCategory"
-import DetailProduct from "../components/DetailsProduct/DetailProduct"
-import HomePage from "../components/Home/HomePage"
-import Post from "../components/Post/Post"
-import OTP from "../components/Auth/OTP"
+import MainCategory from "../Category/MainCategory"
+import DetailProduct from "../DetailsProduct/DetailProduct"
+import HomePage from "../Home/HomePage"
+import Post from "../Post/Post"
+import OTP from "../Auth/OTP"
 
 const UserRouter = () => {
   return (

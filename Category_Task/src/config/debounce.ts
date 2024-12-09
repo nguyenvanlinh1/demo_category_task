@@ -1,13 +1,14 @@
-type Props = {
-    func: (...args: any[]) => void;
-    wait: number;
+// type Props = {
+//   callback: (...args: any[]) => void;
+//   wait: number;
+// };
+
+export const debounce = (callback: (...args: any[]) => void, wait: number) => {
+  let timeout : any = null;
+  return (...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      callback(...args);
+    }, wait);
   };
-  
-  export function debounce({ func, wait }: Props) {
-    let timeout: ReturnType<typeof setTimeout>;
-    return function executedFunction(...args: any[]) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), wait);
-    };
-  }
-  
+}

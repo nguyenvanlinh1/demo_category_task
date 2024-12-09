@@ -1,8 +1,8 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import ListCompany from "./components/Footer/ListCompany";
-import MainFooter from "./components/Footer/MainFooter";
-import Navigation from "./components/Navigation/Navigation";
+import ListCompany from "./Footer/ListCompany";
+import MainFooter from "./Footer/MainFooter";
+import Navigation from "./Navigation/Navigation";
 import UserRouter from "./routers/UserRouter";
 import { useEffect } from "react";
 
